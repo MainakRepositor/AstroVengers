@@ -7,7 +7,7 @@ import streamlit as st
 from web_functions import load_data
 
 # Import pages
-from Tabs import home, data, predict, visualise
+from Tabs import home, predict, visualise
 
 # Configure the app
 st.set_page_config(
@@ -20,7 +20,6 @@ st.set_page_config(
 # Dictionary for pages
 Tabs = {
     "Home": home,
-    "Data Info": data,
     "Prediction": predict,
     "Visualisation": visualise
     
@@ -41,7 +40,5 @@ df, X, y = load_data()
 # Call the app funciton of selected page to run
 if page in ["Prediction", "Visualisation"]:
     Tabs[page].app(df, X, y)
-elif (page == "Data Info"):
-    Tabs[page].app(df)
 else:
     Tabs[page].app()
